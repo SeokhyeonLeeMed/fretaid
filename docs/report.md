@@ -45,10 +45,10 @@ tunings correct rather than approximately correct.
 
 - **The application is now called FretAid.** Another site already uses the
   earlier name. Every mention in the interface, in all six languages, in the
-  code and in the documentation was changed. Three things deliberately were
-  not: the logo inside the instrument drawings, which is the owner's to
-  redraw; the project folder; and the GitHub repository, whose address the
-  live site is served from. Settings saved under the old name are still read,
+  code and in the documentation was changed, and the project moved to a new
+  GitHub repository, `fretaid`. Two things deliberately were not renamed: the
+  logo inside the instrument drawings, which is the owner's to redraw, and the
+  project folder on disk. Settings saved under the old name are still read,
   so nobody's instrument, tuning or language is reset by the rename.
 - **Zooming no longer makes the instrument section taller.** The section keeps
   one height; zooming in enlarges the instrument inside it and crops what does

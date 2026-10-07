@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 // `base: './'` makes the production build work from ANY path:
-//   - GitHub Pages project site  https://<user>.github.io/fretlab/
+//   - GitHub Pages project site  https://<user>.github.io/fretaid/
 //   - Cloudflare Pages / Netlify / Vercel root deploys
 //   - opening dist/index.html straight off disk
 // No custom domain and no env-specific configuration required.
