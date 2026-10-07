@@ -170,7 +170,7 @@ export const es: Messages = {
     'Mantiene el resto de posiciones tenuemente visibles para que puedas pulsarlas.',
   'audio.stop': 'Detener todo el sonido',
   'audio.reset': 'Restablecer ajustes',
-  'audio.reset.confirm': '¿Restablecer todos los ajustes de FretLab a sus valores por defecto?',
+  'audio.reset.confirm': '¿Restablecer todos los ajustes de FretAid a sus valores por defecto?',
   'audio.persist.yes':
     'Tu instrumento, afinación, escala, tema y ajustes de sonido se recuerdan en este navegador. Sin cuenta y sin servidor.',
   'audio.persist.no':
@@ -228,7 +228,7 @@ export const es: Messages = {
   'tuner.meter.reading': ({ cents, verdict }) => `${cents} centésimas ${verdict}`,
   'tuner.waiting.title': 'Esperando permiso del micrófono',
   'tuner.waiting.body':
-    'Tu navegador está preguntando si FretLab puede usar el micrófono. Elige Permitir para empezar a afinar. No se graba, sube ni guarda nada: el audio se analiza en la página y se descarta.',
+    'Tu navegador está preguntando si FretAid puede usar el micrófono. Elige Permitir para empezar a afinar. No se graba, sube ni guarda nada: el audio se analiza en la página y se descarta.',
   'tuner.ready.title': 'Afinador listo',
   'tuner.ready.body':
     'El afinador escucha por el micrófono. El permiso se pide solo ahora, cuando abres el afinador de verdad.',
@@ -256,14 +256,14 @@ export const es: Messages = {
   'audio.err.init': ({ reason }) => `No se pudo inicializar el audio: ${reason}`,
   'audio.err.playback': ({ reason }) => `Fallo en la reproducción: ${reason}`,
 
-  'crash.title': 'FretLab ha tenido un problema',
+  'crash.title': 'FretAid ha tenido un problema',
   'crash.body':
     'Algo de la interfaz no se ha podido dibujar. Los detalles están en la consola del navegador.',
   'crash.reload': 'Recargar la página',
   'crash.clear': 'Borrar los ajustes guardados y recargar',
 
   'footer.note':
-    'FretLab — todos los nombres de nota, escalas, posiciones de acorde y objetivos del afinador se calculan a partir de la afinación elegida.',
+    'FretAid — todos los nombres de nota, escalas, posiciones de acorde y objetivos del afinador se calculan a partir de la afinación elegida.',
 
   'help.prefix': ({ text }) => `Ayuda: ${text}`,
 };

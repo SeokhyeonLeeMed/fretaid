@@ -7,7 +7,7 @@
  */
 
 import { create } from 'zustand';
-import { persist, createJSONStorage } from './persist';
+import { persist, createJSONStorage, SETTINGS_KEY } from './persist';
 import { getInstrument, getTuning, INSTRUMENTS } from '../core/instruments/definitions';
 import type { Tuning } from '../core/theory/fretboard';
 import { STRUM_PRESETS, type StrumMode, type StrumPreset } from '../core/audio/AudioEngine';
@@ -108,7 +108,7 @@ export interface AppState {
 }
 
 /**
- * The browser's preferred language, narrowed to one FretLab offers. Kept here
+ * The browser's preferred language, narrowed to one FretAid offers. Kept here
  * rather than imported from i18n so the store has no dependency on it; the
  * i18n module's detectLocale is the same rule and is the one under test.
  */
@@ -238,7 +238,7 @@ export const useStore = create<AppState>()(
       reset: () => set({ ...DEFAULTS }),
     }),
     {
-      name: 'fretlab.settings.v1',
+      name: SETTINGS_KEY,
       storage: createJSONStorage(),
       /** Transient things (selection, tuner pin, saved camera) are not saved. */
       partialize: (s) => ({

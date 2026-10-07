@@ -1,5 +1,5 @@
 ---
-title: "FretLab — Project Report"
+title: "FretAid — Project Report"
 subtitle: "An interactive guitar and bass fretboard, scale, chord and tuner application"
 author: "Build report"
 date: "6 October 2026"
@@ -7,7 +7,7 @@ date: "6 October 2026"
 
 # 1. Summary
 
-FretLab is a complete, working web application for guitar and bass learners. It
+FretAid is a complete, working web application for guitar and bass learners. It
 is not a prototype: every button described below does the thing it says, and the
 project is ready to run locally and to deploy to free hosting without buying a
 domain.
@@ -22,7 +22,7 @@ domain.
 | **Audio** | Karplus–Strong plucked-string synthesis, Web Audio API, no samples |
 | **Tuner** | Microphone pitch detection, accurate to about one cent |
 | **Languages** | English, 한국어, 日本語, 简体中文, 繁體中文, Español |
-| **Tests** | 277, all passing |
+| **Tests** | 280, all passing |
 | **Production bundle** | 393 kB JavaScript (131 kB gzipped), 16 kB CSS |
 | **Deployment** | GitHub Pages workflow included; Cloudflare, Netlify, Vercel configs included |
 | **Cost to run** | Nothing. No backend, no account, no domain. |
@@ -41,6 +41,23 @@ tunings correct rather than approximately correct.
 
 ## 2.0 Revisions
 
+### Revision 8
+
+- **The application is now called FretAid.** Another site already uses the
+  earlier name. Every mention in the interface, in all six languages, in the
+  code and in the documentation was changed. Three things deliberately were
+  not: the logo inside the instrument drawings, which is the owner's to
+  redraw; the project folder; and the GitHub repository, whose address the
+  live site is served from. Settings saved under the old name are still read,
+  so nobody's instrument, tuning or language is reset by the rename.
+- **Zooming no longer makes the instrument section taller.** The section keeps
+  one height; zooming in enlarges the instrument inside it and crops what does
+  not fit, with the neck's centre line held on the middle of the section at
+  every zoom.
+- **The box on the small neck no longer snaps to the ends.** A drag moves the
+  view by exactly the distance the pointer travels, all the way to either end
+  of the instrument.
+
 ### Revision 7
 
 - **Moving along the neck is done on a small map of the neck** above the
@@ -48,8 +65,7 @@ tunings correct rather than approximately correct.
   to the neck's real proportions and taper. A
   semi-transparent box marks the part being shown; dragging it, pressing the
   map, or the arrow keys move the view. The map is drawn from the same geometry
-  as the instrument, so the box covers exactly the frets on show, and pushing
-  it against either end carries the view on to the headstock or the body.
+  as the instrument, so the box covers exactly the frets on show.
 - **The instrument drawings are levelled.** The supplied drawings were each
   slightly tilted, so the neck ran downhill: by 0.63° on the guitar, about
   seven units from nut to body, and by 0.09° on the bass. Every SVG in each
@@ -126,7 +142,7 @@ tunings correct rather than approximately correct.
   system by matching shape sizes, fits the equal-tempered fret rule to the
   drawings' own fret lines to recover the nut and scale length (to better than
   one part in a thousand), and re-expresses everything with the nut at the
-  origin and the scale length at 1000 units — so FretLab's computed notes land
+  origin and the scale length at 1000 units — so FretAid's computed notes land
   on the drawn frets. See `reference/README.md`.
 - **Pitch detection was wrong on most strings**, which is what made the tuner's
   meter look as though it worked only for the lowest string. Three independent
@@ -729,7 +745,7 @@ sets the document language, and survives a reload.
 
 # 9. Testing results
 
-`npm test` — **277 tests, 9 files, all passing** in about a minute.
+`npm test` — **280 tests, 9 files, all passing** in about a minute.
 
 | Area | Tests | What is checked |
 | --- | --- | --- |
@@ -741,7 +757,7 @@ sets the document language, and survives a reload.
 | Audio | 13 | rendered notes in tune within 5 cents across both instruments' ranges and three sample rates; harmonic content; decay; determinism |
 | Tuner | 34 | a string played softly, down to 1/500th of full strength, and still to a cent; a DC-offset microphone; room noise and white noise still rejected at every level; the gate following the room, warming up, not being raised by a note, and its ceiling; the decibel signal meter; every open string of every standard tuning; a 31 Hz low B; no octave errors; silence and noise rejected; cents; targets following the current tuning |
 | Translations | 75 | every language covering every interface key, scale, chord, category and tuning; no blank values; parameterised messages still parameterised and still substituting; no English left in the CJK catalogues; browser-language detection, including the Chinese variants |
-| Application | 60 | the map showing the neck alone with all 21 frets, and moving the view by drag, press and keyboard; the wheel not zooming; the zoom slider; the guitar / bass switch moving to the top on a narrow screen; both instruments; tuning changes recalculating the rendered neck; the custom-tuning editor; chord shapes per tuning; the Drop D one-finger power chord; down vs up strum ordering; muted strings silent; strum speed; microphone requested only in tuner mode and released on exit; view saved and restored; persistence; keyboard navigation |
+| Application | 63 | the stage keeping its height when zoomed, with the neck centred; settings saved under the old name still read; the map showing the neck alone with all 21 frets, and moving the view by drag, press and keyboard; the wheel not zooming; the zoom slider; the guitar / bass switch moving to the top on a narrow screen; both instruments; tuning changes recalculating the rendered neck; the custom-tuning editor; chord shapes per tuning; the Drop D one-finger power chord; down vs up strum ordering; muted strings silent; strum speed; microphone requested only in tuner mode and released on exit; view saved and restored; persistence; keyboard navigation |
 
 The application tests render the real application in jsdom and drive it the way
 a visitor would, rather than testing a stub.
@@ -937,7 +953,7 @@ a metronome, saving custom scales, and exporting a chord diagram as an image.
 | --- | --- |
 | Source | `C:\Users\hahah\fretlab` |
 | Documentation | `README.md` — install, run, build, deploy, microphone, browser support, architecture, engine explanations, full catalogues, test results |
-| This report | `docs/report.md`, `docs/FretLab-report.docx`, `docs/FretLab-report.pdf` |
+| This report | `docs/report.md`, `docs/FretAid-report.docx`, `docs/FretAid-report.pdf` |
 | Deployment | `.github/workflows/deploy.yml`, `netlify.toml`, `vercel.json` |
 | Languages | `src/i18n/` — one file per language, plus the English source of truth |
 | Browser check scripts | `tools/screenshots.mjs`, `tools/audio-check.mjs`, `tools/tuner-check.mjs`, `tools/catalogue.mjs` |

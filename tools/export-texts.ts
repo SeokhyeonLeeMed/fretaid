@@ -92,7 +92,7 @@ const out: string[] = [];
 const p = (...lines: string[]): void => void out.push(...lines);
 
 p(
-  '# FretLab — all interface text',
+  '# FretAid — all interface text',
   '',
   '> **Generated file.** Do not edit by hand: run `npm run texts` to rebuild it from the catalogues in',
   '> `src/i18n/`. To change a translation, edit the language file named in the table below, then regenerate.',

@@ -9,6 +9,7 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
 import { translate } from '../i18n';
 import { useStore, type Locale } from '../state/store';
+import { LEGACY_SETTINGS_KEY, SETTINGS_KEY } from '../state/persist';
 
 interface Props {
   children: ReactNode;
@@ -39,7 +40,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
     // Kept on the console for anyone debugging a deployed copy.
-    console.error('FretLab failed to render:', error, info.componentStack);
+    console.error('FretAid failed to render:', error, info.componentStack);
   }
 
   render(): ReactNode {
@@ -73,7 +74,8 @@ export class ErrorBoundary extends Component<Props, State> {
             className="btn"
             onClick={() => {
               try {
-                localStorage.removeItem('fretlab.settings.v1');
+                localStorage.removeItem(SETTINGS_KEY);
+                localStorage.removeItem(LEGACY_SETTINGS_KEY);
               } catch {
                 /* storage may be blocked; reloading is still worth a try */
               }

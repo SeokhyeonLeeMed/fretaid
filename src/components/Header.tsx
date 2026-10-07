@@ -36,7 +36,7 @@ export function Header() {
           </g>
         </svg>
         <span>
-          FretLab
+          FretAid
           <span className="logo-sub" style={{ display: 'block' }}>
             {t('app.tagline')}
           </span>

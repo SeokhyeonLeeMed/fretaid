@@ -15,7 +15,7 @@
 
 import { type ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Geometry } from './geometry';
-import { NeckMap, neckMapRange } from './NeckMap';
+import { NeckMap } from './NeckMap';
 import { useT } from '../../i18n';
 import { useStore } from '../../state/store';
 
@@ -79,9 +79,14 @@ export function InstrumentStage({ geo, children, overlay, toolbar }: InstrumentS
   const pxScale = (baseHeight * zoom) / geo.height;
   const renderWidth = geo.width * pxScale;
   const contentHeight = geo.height * pxScale;
-  // The stage grows while the tuner is open so the camera has somewhere to
-  // move to and the readout has somewhere to sit.
-  const renderHeight = mode === 'tuner' ? Math.max(contentHeight, 400) : contentHeight;
+  // The stage keeps one height whatever the zoom. Zooming in enlarges the
+  // instrument inside it and crops what no longer fits, rather than growing
+  // the section and pushing the rest of the page down. It is a little taller
+  // while the tuner is open, so the readout has somewhere to sit.
+  const renderHeight = mode === 'tuner' ? Math.max(baseHeight, 400) : baseHeight;
+  // The neck's centre line sits on the middle of the stage at every zoom, so
+  // what is cropped is cropped evenly above and below it.
+  const offsetY = renderHeight / 2 - geo.centreY * pxScale;
 
   // --- panning -----------------------------------------------------------
   const panTo = useCallback((left: number): void => {
@@ -151,7 +156,8 @@ export function InstrumentStage({ geo, children, overlay, toolbar }: InstrumentS
       // The scroll offset is still in effect under the transform, so it has to
       // be added back for the headstock to land where it is wanted.
       const tx = containerW * (wide ? 0.31 : 0.5) - scale * hx + sc.scrollLeft;
-      const ty = containerH * (wide ? 0.5 : 0.36) - scale * hy;
+      // The camera is already shifted down by offsetY, so that comes off.
+      const ty = containerH * (wide ? 0.5 : 0.36) - scale * hy - offsetY;
       setTransform(`translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(${scale.toFixed(3)})`);
       return;
     }
@@ -181,6 +187,7 @@ export function InstrumentStage({ geo, children, overlay, toolbar }: InstrumentS
     geo.nutX,
     renderHeight,
     contentHeight,
+    offsetY,
     saveViewBeforeTuner,
     clearViewBeforeTuner,
     setZoom,
@@ -225,18 +232,10 @@ export function InstrumentStage({ geo, children, overlay, toolbar }: InstrumentS
   const viewX0 = pxScale > 0 ? scrollLeft / pxScale : 0;
   const viewX1 = pxScale > 0 ? (scrollLeft + stageWidth) / pxScale : geo.width;
   const maxScroll = Math.max(0, renderWidth - stageWidth);
-  const map = neckMapRange(geo);
 
-  /**
-   * The map only covers the neck. Pushing the box against either end of it
-   * carries the view all the way to that end of the instrument, so the
-   * headstock and the body stay reachable.
-   */
+  /** Move the view so its left edge is at x0. The ends are where it stops. */
   const moveView = (x0: number): void => {
-    const width = viewX1 - viewX0;
-    if (x0 <= map.x0) panTo(0);
-    else if (x0 + width >= map.x1) panTo(maxScroll);
-    else panTo(x0 * pxScale);
+    panTo(Math.min(maxScroll, Math.max(0, x0 * pxScale)));
   };
 
   return (
@@ -264,7 +263,7 @@ export function InstrumentStage({ geo, children, overlay, toolbar }: InstrumentS
         <div
           className="stage-camera"
           ref={cameraRef}
-          style={{ width: renderWidth, height: contentHeight, transform }}
+          style={{ width: renderWidth, height: contentHeight, top: offsetY, transform }}
         >
           <div style={{ width: geo.width, height: geo.height, transform: `scale(${pxScale})`, transformOrigin: '0 0' }}>
             {children}

@@ -161,7 +161,7 @@ export const zhHans: Messages = {
   'audio.showOutside.help': '把其余位置淡淡保留，仍可点按。',
   'audio.stop': '停止所有声音',
   'audio.reset': '重置设置',
-  'audio.reset.confirm': '要把 FretLab 的所有设置恢复为默认值吗？',
+  'audio.reset.confirm': '要把 FretAid 的所有设置恢复为默认值吗？',
   'audio.persist.yes':
     '乐器、调弦、音阶、主题与声音设置都保存在这个浏览器里。无需账号，也不需要服务器。',
   'audio.persist.no': '这个浏览器禁用了本地存储，刷新后设置会恢复默认。',
@@ -215,7 +215,7 @@ export const zhHans: Messages = {
   'tuner.meter.reading': ({ cents, verdict }) => `${cents} 音分 ${verdict}`,
   'tuner.waiting.title': '正在等待麦克风权限',
   'tuner.waiting.body':
-    '浏览器正在询问 FretLab 是否可以使用麦克风。选择“允许”即可开始调音。不会录音、上传或保存任何内容：声音在页面内分析后随即丢弃。',
+    '浏览器正在询问 FretAid 是否可以使用麦克风。选择“允许”即可开始调音。不会录音、上传或保存任何内容：声音在页面内分析后随即丢弃。',
   'tuner.ready.title': '调音器已就绪',
   'tuner.ready.body': '调音器通过麦克风聆听。只有在你真正打开调音器时才会请求权限。',
   'tuner.start': '开始聆听',
@@ -240,12 +240,12 @@ export const zhHans: Messages = {
   'audio.err.init': ({ reason }) => `音频初始化失败：${reason}`,
   'audio.err.playback': ({ reason }) => `播放失败：${reason}`,
 
-  'crash.title': 'FretLab 出现了问题',
+  'crash.title': 'FretAid 出现了问题',
   'crash.body': '界面渲染失败。详细信息在浏览器控制台中。',
   'crash.reload': '重新加载页面',
   'crash.clear': '清除已保存的设置并重新加载',
 
-  'footer.note': 'FretLab — 所有音名、音阶、和弦指型与调音目标音，都由选定的调弦算出。',
+  'footer.note': 'FretAid — 所有音名、音阶、和弦指型与调音目标音，都由选定的调弦算出。',
 
   'help.prefix': ({ text }) => `帮助：${text}`,
 };

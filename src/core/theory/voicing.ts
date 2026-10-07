@@ -2,7 +2,7 @@
  * voicing.ts — tuning + chord -> playable fret shapes.
  *
  * This is the module that makes alternate tunings correct. There is no table
- * of chord shapes anywhere in FretLab. Shapes are *searched for* against the
+ * of chord shapes anywhere in FretAid. Shapes are *searched for* against the
  * live open-string pitches, so in Drop D the solver finds the one-finger
  * power chord by itself, and in any tuning a shape is only ever offered if
  * its actual sounding pitches really do spell the requested chord.

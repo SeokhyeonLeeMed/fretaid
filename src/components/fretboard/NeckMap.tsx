@@ -8,9 +8,13 @@
  *
  * Only the neck is drawn — the nut, every fret and the position dots — since
  * that is where the notes are and it is what a player navigates by. The box is
- * the visible part of the instrument clipped to the neck; pushing it against
- * either end of the map carries the view on to the headstock or the body, so
- * nothing is out of reach.
+ * the visible part of the instrument clipped to the neck.
+ *
+ * A drag moves the view by exactly the distance the pointer travels, the whole
+ * way: there is no snapping at the ends. Where the view runs past the nut or
+ * the last fret, on to the headstock or the body, the box's edge simply stays
+ * at the end of the map while the other edge keeps following, and the pointer
+ * is free to carry on past the map to reach the very end of the instrument.
  *
  * The drawing is a schematic, not the instrument artwork, but it is to scale:
  * it uses the stage's own coordinates in both directions, so the neck keeps
@@ -58,16 +62,6 @@ export function NeckMap(props: NeckMapProps) {
   const { x0, x1 } = neckMapRange(geo);
   const length = x1 - x0;
   const viewWidth = viewX1 - viewX0;
-  /**
-   * The view's left edge as the map sees it. Where the view runs off an end of
-   * the map the box is clipped there, and movement is measured from the
-   * clipped box, so the first pixel of a drag moves it: measured from the true
-   * edge, a drag away from the headstock would do nothing until it had
-   * covered the headstock's whole width.
-   */
-  const anchor =
-    viewX1 > x1 && viewX0 > x0 ? x1 - viewWidth : Math.max(viewX0, x0);
-
   const xAt = useCallback(
     (clientX: number): number => {
       const el = trackRef.current;
@@ -84,7 +78,7 @@ export function NeckMap(props: NeckMapProps) {
     // Taking hold of the box keeps the point under the pointer; pressing the
     // map anywhere else brings the box to it, centred, and drags from there.
     const inside = at >= Math.max(viewX0, x0) && at <= Math.min(viewX1, x1);
-    grip.current = inside ? at - anchor : viewWidth / 2;
+    grip.current = inside ? at - viewX0 : viewWidth / 2;
     if (!inside) onMove(at - viewWidth / 2);
     e.currentTarget.setPointerCapture?.(e.pointerId);
     e.preventDefault();
@@ -103,10 +97,10 @@ export function NeckMap(props: NeckMapProps) {
     if (disabled) return;
     const step = Math.max(length * 0.02, viewWidth / 4);
     let next: number | null = null;
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = anchor - step;
-    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = anchor + step;
-    else if (e.key === 'PageUp') next = anchor - viewWidth;
-    else if (e.key === 'PageDown') next = anchor + viewWidth;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = viewX0 - step;
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = viewX0 + step;
+    else if (e.key === 'PageUp') next = viewX0 - viewWidth;
+    else if (e.key === 'PageDown') next = viewX0 + viewWidth;
     else if (e.key === 'Home') next = -Infinity;
     else if (e.key === 'End') next = Infinity;
     if (next === null) return;

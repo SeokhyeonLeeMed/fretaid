@@ -165,7 +165,7 @@ export const ko: Messages = {
   'audio.showOutside.help': '나머지 자리를 흐리게 남겨 두어 눌러 볼 수 있게 합니다.',
   'audio.stop': '소리 모두 멈추기',
   'audio.reset': '설정 초기화',
-  'audio.reset.confirm': 'FretLab의 모든 설정을 기본값으로 되돌릴까요?',
+  'audio.reset.confirm': 'FretAid의 모든 설정을 기본값으로 되돌릴까요?',
   'audio.persist.yes':
     '악기, 튜닝, 스케일, 테마, 소리 설정이 이 브라우저에 저장됩니다. 계정도 서버도 필요 없습니다.',
   'audio.persist.no':
@@ -221,7 +221,7 @@ export const ko: Messages = {
   'tuner.meter.reading': ({ cents, verdict }) => `${cents}센트 ${verdict}`,
   'tuner.waiting.title': '마이크 권한을 기다리는 중',
   'tuner.waiting.body':
-    'FretLab이 마이크를 사용해도 되는지 브라우저가 묻고 있습니다. 허용을 선택하면 조율을 시작합니다. 아무것도 녹음하거나 전송하거나 저장하지 않으며, 소리는 페이지 안에서 분석한 뒤 버려집니다.',
+    'FretAid이 마이크를 사용해도 되는지 브라우저가 묻고 있습니다. 허용을 선택하면 조율을 시작합니다. 아무것도 녹음하거나 전송하거나 저장하지 않으며, 소리는 페이지 안에서 분석한 뒤 버려집니다.',
   'tuner.ready.title': '튜너 준비됨',
   'tuner.ready.body':
     '튜너는 마이크로 듣습니다. 권한은 튜너를 실제로 열었을 때에만 요청합니다.',
@@ -247,13 +247,13 @@ export const ko: Messages = {
   'audio.err.init': ({ reason }) => `오디오를 초기화할 수 없습니다: ${reason}`,
   'audio.err.playback': ({ reason }) => `재생에 실패했습니다: ${reason}`,
 
-  'crash.title': 'FretLab에 문제가 생겼습니다',
+  'crash.title': 'FretAid에 문제가 생겼습니다',
   'crash.body': '화면을 그리는 중 오류가 났습니다. 자세한 내용은 브라우저 콘솔에 있습니다.',
   'crash.reload': '페이지 새로 고치기',
   'crash.clear': '저장된 설정을 지우고 새로 고치기',
 
   'footer.note':
-    'FretLab — 모든 음 이름, 스케일, 코드 폼, 튜너 목표음은 선택한 튜닝에서 계산됩니다.',
+    'FretAid — 모든 음 이름, 스케일, 코드 폼, 튜너 목표음은 선택한 튜닝에서 계산됩니다.',
 
   'help.prefix': ({ text }) => `도움말: ${text}`,
 };

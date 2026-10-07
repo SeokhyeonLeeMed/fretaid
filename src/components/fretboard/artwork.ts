@@ -7,7 +7,7 @@
  * Everything is in the "instrument frame": the origin is the centre of the
  * nut, +x runs along the strings towards the bridge, +y is the bass side
  * (drawn at the bottom), and the scale length is exactly 1000 units. The frame
- * is fitted to the drawings' own fret lines, so FretLab's computed fret
+ * is fitted to the drawings' own fret lines, so FretAid's computed fret
  * positions land on the drawn frets.
  */
 

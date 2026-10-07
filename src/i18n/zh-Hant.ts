@@ -165,7 +165,7 @@ export const zhHant: Messages = {
   'audio.showOutside.help': '把其餘位置淡淡保留，仍可點按。',
   'audio.stop': '停止所有聲音',
   'audio.reset': '重設設定',
-  'audio.reset.confirm': '要把 FretLab 的所有設定恢復成預設值嗎？',
+  'audio.reset.confirm': '要把 FretAid 的所有設定恢復成預設值嗎？',
   'audio.persist.yes':
     '樂器、調弦、音階、主題與聲音設定都儲存在這個瀏覽器裡。不需帳號，也不需伺服器。',
   'audio.persist.no': '這個瀏覽器停用了本機儲存空間，重新整理後設定會回到預設值。',
@@ -219,7 +219,7 @@ export const zhHant: Messages = {
   'tuner.meter.reading': ({ cents, verdict }) => `${cents} 音分 ${verdict}`,
   'tuner.waiting.title': '正在等待麥克風權限',
   'tuner.waiting.body':
-    '瀏覽器正在詢問 FretLab 是否可以使用麥克風。選擇「允許」即可開始調音。不會錄音、上傳或儲存任何內容：聲音在頁面內分析後隨即丟棄。',
+    '瀏覽器正在詢問 FretAid 是否可以使用麥克風。選擇「允許」即可開始調音。不會錄音、上傳或儲存任何內容：聲音在頁面內分析後隨即丟棄。',
   'tuner.ready.title': '調音器已就緒',
   'tuner.ready.body': '調音器透過麥克風聆聽。只有在你真正開啟調音器時才會請求權限。',
   'tuner.start': '開始聆聽',
@@ -244,12 +244,12 @@ export const zhHant: Messages = {
   'audio.err.init': ({ reason }) => `音訊初始化失敗：${reason}`,
   'audio.err.playback': ({ reason }) => `播放失敗：${reason}`,
 
-  'crash.title': 'FretLab 發生了問題',
+  'crash.title': 'FretAid 發生了問題',
   'crash.body': '介面繪製失敗。詳細資訊在瀏覽器主控台中。',
   'crash.reload': '重新載入頁面',
   'crash.clear': '清除已儲存的設定並重新載入',
 
-  'footer.note': 'FretLab — 所有音名、音階、和弦指型與調音目標音，都由選定的調弦算出。',
+  'footer.note': 'FretAid — 所有音名、音階、和弦指型與調音目標音，都由選定的調弦算出。',
 
   'help.prefix': ({ text }) => `說明：${text}`,
 };

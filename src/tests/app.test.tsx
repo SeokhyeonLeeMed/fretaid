@@ -13,6 +13,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { App } from '../App';
 import { useStore } from '../state/store';
+import { buildGeometry } from '../components/fretboard/geometry';
+import { getInstrument } from '../core/instruments/definitions';
 import { audioEngine } from '../core/audio/AudioEngine';
 
 const resetStore = (): void => {
@@ -286,7 +288,7 @@ describe('reference pitch', () => {
     fireEvent.click(screen.getByRole('button', { name: '432 Hz' }));
     expect(useStore.getState().a4).toBe(432);
     unmount();
-    expect(JSON.parse(localStorage.getItem('fretlab.settings.v1') ?? '{}').state.a4).toBe(432);
+    expect(JSON.parse(localStorage.getItem('fretaid.settings.v1') ?? '{}').state.a4).toBe(432);
   });
 
   it('stays within a sensible range', () => {
@@ -712,7 +714,7 @@ describe('settings persistence', () => {
     act(() => useStore.getState().setVolume(0.33));
     unmount();
 
-    const saved = JSON.parse(localStorage.getItem('fretlab.settings.v1') ?? '{}');
+    const saved = JSON.parse(localStorage.getItem('fretaid.settings.v1') ?? '{}');
     expect(saved.state).toMatchObject({
       instrumentId: 'bass4',
       tuningId: 'tenor',
@@ -728,7 +730,7 @@ describe('settings persistence', () => {
     const { unmount } = render(<App />);
     fireEvent.click(screen.getByRole('button', { name: 'Tuner' }));
     unmount();
-    const saved = JSON.parse(localStorage.getItem('fretlab.settings.v1') ?? '{}');
+    const saved = JSON.parse(localStorage.getItem('fretaid.settings.v1') ?? '{}');
     expect(saved.state.mode).not.toBe('tuner');
   });
 });
@@ -811,7 +813,7 @@ describe('the language picker', () => {
     expect(screen.getByText('Instrumento')).toBeTruthy();
     first.unmount();
 
-    const saved = JSON.parse(localStorage.getItem('fretlab.settings.v1') ?? '{}');
+    const saved = JSON.parse(localStorage.getItem('fretaid.settings.v1') ?? '{}');
     expect(saved.state.locale).toBe('es');
   });
 });
@@ -942,5 +944,54 @@ describe('on a narrow screen', () => {
     const group = screen.getByRole('group', { name: 'Type' });
     expect(group.closest('.family-bar')).toBeNull();
     expect(group.closest('#instrument')).toBeTruthy();
+  });
+});
+
+describe('the stage keeps its height', () => {
+  const zoomSlider = (): HTMLInputElement => screen.getByRole('slider', { name: 'Zoom' }) as HTMLInputElement;
+  const stage = (): HTMLElement => document.querySelector('.stage-scroll') as HTMLElement;
+  const camera = (): HTMLElement => document.querySelector('.stage-camera') as HTMLElement;
+
+  it('does not grow when zoomed in: the instrument is cropped instead', () => {
+    render(<App />);
+    const height = stage().style.height;
+    expect(parseFloat(height)).toBeGreaterThan(0);
+
+    fireEvent.change(zoomSlider(), { target: { value: '2.6' } });
+    expect(stage().style.height).toBe(height);
+    // The instrument itself is now taller than the window it is seen through.
+    expect(parseFloat(camera().style.height)).toBeGreaterThan(parseFloat(height));
+
+    fireEvent.change(zoomSlider(), { target: { value: '0.55' } });
+    expect(stage().style.height).toBe(height);
+  });
+
+  it('keeps the neck on the vertical centre at every zoom', () => {
+    render(<App />);
+    const geo = buildGeometry(getInstrument('guitar6'));
+    for (const zoom of ['0.55', '1', '1.7', '2.6']) {
+      fireEvent.change(zoomSlider(), { target: { value: zoom } });
+      const stageHeight = parseFloat(stage().style.height);
+      // Pixels per drawing unit at this zoom.
+      const scale = parseFloat(camera().style.height) / geo.height;
+      const neckCentre = parseFloat(camera().style.top) + geo.centreY * scale;
+      expect(neckCentre, `zoom ${zoom}`).toBeCloseTo(stageHeight / 2, 3);
+    }
+  });
+});
+
+describe('settings saved before the rename', () => {
+  it('are still read from the old key', () => {
+    // Someone returning after the rename has only the old key.
+    localStorage.clear();
+    localStorage.setItem(
+      'fretlab.settings.v1',
+      JSON.stringify({ state: { instrumentId: 'bass4', tuningId: 'drop-d', theme: 'light' }, version: 0 }),
+    );
+    act(() => {
+      void useStore.persist.rehydrate();
+    });
+    expect(useStore.getState().instrumentId).toBe('bass4');
+    expect(useStore.getState().tuningId).toBe('drop-d');
   });
 });

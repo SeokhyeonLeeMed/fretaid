@@ -1,4 +1,4 @@
-# Builds FretLab and publishes it to GitHub Pages on every push to main.
+# Builds FretAid and publishes it to GitHub Pages on every push to main.
 #
 # One-time setup in the repository: Settings -> Pages -> Build and deployment
 # -> Source: "GitHub Actions". No secrets and no custom domain are needed; the

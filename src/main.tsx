@@ -6,7 +6,7 @@ import './styles/global.css';
 
 const container = document.getElementById('root');
 if (!container) {
-  throw new Error('FretLab could not start: the #root element is missing from index.html.');
+  throw new Error('FretAid could not start: the #root element is missing from index.html.');
 }
 
 createRoot(container).render(

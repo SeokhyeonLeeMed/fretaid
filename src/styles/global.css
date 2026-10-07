@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FretLab — design tokens and layout.
+   FretAid — design tokens and layout.
 
    Colour is always paired with a second cue (shape, outline, text label), so
    the interface stays readable without relying on colour vision.
@@ -636,6 +636,7 @@ input[type='range']::-moz-range-thumb {
 }
 
 .stage-camera {
+  position: relative;
   transform-origin: 0 0;
   transition: transform var(--camera-transition);
   will-change: transform;

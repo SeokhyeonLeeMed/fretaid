@@ -139,7 +139,7 @@ export function applyLocaleToDocument(locale: Locale): void {
 
   const font = BUNDLES[locale].font;
   if (!font) return;
-  const id = `fretlab-font-${font}`;
+  const id = `fretaid-font-${font}`;
   if (document.getElementById(id)) return;
   const link = document.createElement('link');
   link.id = id;

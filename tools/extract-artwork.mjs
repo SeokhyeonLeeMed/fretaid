@@ -12,7 +12,7 @@
  * are measured and the equal-tempered fret rule is fitted to them, which gives
  * the nut position and the scale length in drawing units. Everything is then
  * re-expressed with the nut at the origin and the scale length exactly 1000
- * units, so FretLab's computed notes land on the drawn frets.
+ * units, so FretAid's computed notes land on the drawn frets.
  *
  * Usage: node tools/extract-artwork.mjs
  */
@@ -434,7 +434,7 @@ const banner = `/**
  * Everything is in the "instrument frame": the origin is the centre of the
  * nut, +x runs along the strings towards the bridge, +y is the bass side
  * (drawn at the bottom), and the scale length is exactly 1000 units. The frame
- * is fitted to the drawings' own fret lines, so FretLab's computed fret
+ * is fitted to the drawings' own fret lines, so FretAid's computed fret
  * positions land on the drawn frets.
  */
 

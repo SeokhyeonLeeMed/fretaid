@@ -1,4 +1,4 @@
-# FretLab
+# FretAid
 
 An interactive fretboard for guitar and bass. Pick an instrument, put it in any
 tuning you like, and the whole neck re-derives itself: note names, scale
@@ -25,8 +25,8 @@ in the browser — no server, no accounts, no audio files, no paid domain.
 You need [Node.js](https://nodejs.org/) 18 or newer (20 LTS recommended).
 
 ```bash
-git clone <your-repository-url> fretlab
-cd fretlab
+git clone <your-repository-url> fretaid
+cd fretaid
 npm install
 ```
 
@@ -180,7 +180,7 @@ src/
     index.ts                  lookup, the `useT` hook, language detection
 
   hooks/                      the React bindings for the engines
-  tests/                      277 tests
+  tests/                      280 tests
 ```
 
 **State versus derived data.** The store holds only choices — `"guitar6"`,
@@ -615,7 +615,8 @@ where its own grammar wants them:
 
 ## 14. Settings that are remembered
 
-Stored in `localStorage` under `fretlab.settings.v1`, with no account and no
+Stored in `localStorage` under `fretaid.settings.v1` (settings saved under the
+earlier name, `fretlab.settings.v1`, are still read), with no account and no
 backend: instrument, tuning (including custom tunings per instrument), scale and
 root, chord and root, volume, zoom, note-label preference and style, theme,
 strum direction and speed, language. Tuner mode is deliberately *not* remembered, so
@@ -628,7 +629,7 @@ runs on defaults and says so.
 npm test
 ```
 
-**277 tests, all passing.** They cover the music-theory engine directly and the
+**280 tests, all passing.** They cover the music-theory engine directly and the
 application through its user interface.
 
 | Area | Tests | Examples of what is checked |
@@ -641,7 +642,7 @@ application through its user interface.
 | Audio (`audio.test.ts`) | 13 | rendered notes in tune within 5 cents across both instruments' full ranges and three sample rates; harmonic content (not a sine); decay; determinism |
 | Tuner (`tuner.test.ts`) | 34 | a string played softly, down to 1/500th of full strength and still accurate to a cent; a microphone with a DC offset; room noise and white noise still rejected at every level; the gate following the room, its warm-up, that a note cannot raise it, and its ceiling; the decibel signal meter; detection of every open string of every standard tuning; a 31 Hz low B; no octave errors; silence and noise rejected; cents deviation; targets following the current tuning |
 | Translations (`i18n.test.ts`) | 75 | every language covering every interface key, scale, chord, category and tuning id; nothing blank; every message English parameterises still parameterised elsewhere, and still substituting its arguments; no English prose left in the four CJK catalogues; browser-language detection, including `zh-TW`/`zh-HK`/`zh-MO` as Traditional and `zh-CN`/`zh-SG`/`zh` as Simplified |
-| Application (`app.test.tsx`) | 60 | the neck map drawing all 21 frets and moving the view by drag, press and keyboard; the wheel not zooming; the zoom slider; the guitar / bass switch moving to the top on a narrow screen; both instruments; tuning changes recalculating the rendered neck; the custom-tuning editor; chord shapes recalculated per tuning; the Drop D one-finger power chord; down vs up strum ordering; muted strings silent; strum speed; microphone requested only in tuner mode and released on exit; view saved and restored; persistence; keyboard navigation |
+| Application (`app.test.tsx`) | 63 | the stage keeping its height when zoomed, with the neck centred; settings saved under the old name still being read; the neck map drawing all 21 frets and moving the view by drag, press and keyboard; the wheel not zooming; the zoom slider; the guitar / bass switch moving to the top on a narrow screen; both instruments; tuning changes recalculating the rendered neck; the custom-tuning editor; chord shapes recalculated per tuning; the Drop D one-finger power chord; down vs up strum ordering; muted strings silent; strum speed; microphone requested only in tuner mode and released on exit; view saved and restored; persistence; keyboard navigation |
 
 ### Checks run in a real browser
 
@@ -673,9 +674,11 @@ the source of truth — so edit the language file and run the command again.
 
 - **Move** along the neck with the small map of the neck above the instrument:
   drag the box, press anywhere on the map, or focus it and use the arrow keys,
-  Home and End. Pushing the box against an end of the map carries on to the
-  headstock or the body.
+  Home and End. A drag moves the view by exactly the distance dragged, with no
+  snapping, and can carry on past the map to reach the headstock or the body.
 - **Zoom** with − and +, the slider under them, or a pinch on a touch screen.
+  The instrument section keeps its height: zooming in crops the instrument
+  inside it, with the neck kept on the vertical centre.
 - **The mouse wheel** scrolls the page, and only up and down. It never zooms or
   moves the instrument.
 - **On a narrow screen** the guitar / bass switch sits at the top of the page.
@@ -702,7 +705,7 @@ The instrument graphics are built from the layered SVG drawings in
 `reference/`, one folder per instrument, supplied with the project. They are
 assembled into `src/components/fretboard/artwork.ts` by
 `node tools/extract-artwork.mjs`; `reference/README.md` explains how, including
-how the drawing's own fret lines are used to align it with FretLab's computed
+how the drawing's own fret lines are used to align it with FretAid's computed
 fretboard.
 
 Everything else is generated: the strings, note markers and fret numbers are

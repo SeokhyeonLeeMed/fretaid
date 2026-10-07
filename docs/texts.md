@@ -1,4 +1,4 @@
-# FretLab — all interface text
+# FretAid — all interface text
 
 > **Generated file.** Do not edit by hand: run `npm run texts` to rebuild it from the catalogues in
 > `src/i18n/`. To change a translation, edit the language file named in the table below, then regenerate.
@@ -1000,12 +1000,12 @@ Placeholders: `{hz}`
 
 | | Text |
 | --- | --- |
-| **en** | Reset every FretLab setting to its default? |
-| **ko** | FretLab의 모든 설정을 기본값으로 되돌릴까요? |
-| **ja** | FretLab の設定をすべて初期値に戻しますか？ |
-| **zh-Hans** | 要把 FretLab 的所有设置恢复为默认值吗？ |
-| **zh-Hant** | 要把 FretLab 的所有設定恢復成預設值嗎？ |
-| **es** | ¿Restablecer todos los ajustes de FretLab a sus valores por defecto? |
+| **en** | Reset every FretAid setting to its default? |
+| **ko** | FretAid의 모든 설정을 기본값으로 되돌릴까요? |
+| **ja** | FretAid の設定をすべて初期値に戻しますか？ |
+| **zh-Hans** | 要把 FretAid 的所有设置恢复为默认值吗？ |
+| **zh-Hant** | 要把 FretAid 的所有設定恢復成預設值嗎？ |
+| **es** | ¿Restablecer todos los ajustes de FretAid a sus valores por defecto? |
 
 ### `audio.persist.yes`
 
@@ -2062,12 +2062,12 @@ Placeholders: `{cents}`, `{verdict}`
 
 | | Text |
 | --- | --- |
-| **en** | Your browser is asking whether FretLab may use the microphone. Choose Allow to start tuning. Nothing is recorded, uploaded or stored: the audio is analysed in the page and discarded. |
-| **ko** | FretLab이 마이크를 사용해도 되는지 브라우저가 묻고 있습니다. 허용을 선택하면 조율을 시작합니다. 아무것도 녹음하거나 전송하거나 저장하지 않으며, 소리는 페이지 안에서 분석한 뒤 버려집니다. |
-| **ja** | FretLab がマイクを使ってよいかブラウザが尋ねています。「許可」を選ぶとチューニングを始めます。録音・送信・保存は一切せず、音はページ内で解析してすぐ破棄します。 |
-| **zh-Hans** | 浏览器正在询问 FretLab 是否可以使用麦克风。选择“允许”即可开始调音。不会录音、上传或保存任何内容：声音在页面内分析后随即丢弃。 |
-| **zh-Hant** | 瀏覽器正在詢問 FretLab 是否可以使用麥克風。選擇「允許」即可開始調音。不會錄音、上傳或儲存任何內容：聲音在頁面內分析後隨即丟棄。 |
-| **es** | Tu navegador está preguntando si FretLab puede usar el micrófono. Elige Permitir para empezar a afinar. No se graba, sube ni guarda nada: el audio se analiza en la página y se descarta. |
+| **en** | Your browser is asking whether FretAid may use the microphone. Choose Allow to start tuning. Nothing is recorded, uploaded or stored: the audio is analysed in the page and discarded. |
+| **ko** | FretAid이 마이크를 사용해도 되는지 브라우저가 묻고 있습니다. 허용을 선택하면 조율을 시작합니다. 아무것도 녹음하거나 전송하거나 저장하지 않으며, 소리는 페이지 안에서 분석한 뒤 버려집니다. |
+| **ja** | FretAid がマイクを使ってよいかブラウザが尋ねています。「許可」を選ぶとチューニングを始めます。録音・送信・保存は一切せず、音はページ内で解析してすぐ破棄します。 |
+| **zh-Hans** | 浏览器正在询问 FretAid 是否可以使用麦克风。选择“允许”即可开始调音。不会录音、上传或保存任何内容：声音在页面内分析后随即丢弃。 |
+| **zh-Hant** | 瀏覽器正在詢問 FretAid 是否可以使用麥克風。選擇「允許」即可開始調音。不會錄音、上傳或儲存任何內容：聲音在頁面內分析後隨即丟棄。 |
+| **es** | Tu navegador está preguntando si FretAid puede usar el micrófono. Elige Permitir para empezar a afinar. No se graba, sube ni guarda nada: el audio se analiza en la página y se descarta. |
 
 ### `tuner.ready.title`
 
@@ -2460,12 +2460,12 @@ Placeholders: `{note}`, `{string}`, `{where}`
 
 | | Text |
 | --- | --- |
-| **en** | FretLab — all note names, scales, chord shapes and tuner targets are calculated from the selected tuning. |
-| **ko** | FretLab — 모든 음 이름, 스케일, 코드 폼, 튜너 목표음은 선택한 튜닝에서 계산됩니다. |
-| **ja** | FretLab — 音名・スケール・コードフォーム・チューナーの目標音は、すべて選んだチューニングから計算されます。 |
-| **zh-Hans** | FretLab — 所有音名、音阶、和弦指型与调音目标音，都由选定的调弦算出。 |
-| **zh-Hant** | FretLab — 所有音名、音階、和弦指型與調音目標音，都由選定的調弦算出。 |
-| **es** | FretLab — todos los nombres de nota, escalas, posiciones de acorde y objetivos del afinador se calculan a partir de la afinación elegida. |
+| **en** | FretAid — all note names, scales, chord shapes and tuner targets are calculated from the selected tuning. |
+| **ko** | FretAid — 모든 음 이름, 스케일, 코드 폼, 튜너 목표음은 선택한 튜닝에서 계산됩니다. |
+| **ja** | FretAid — 音名・スケール・コードフォーム・チューナーの目標音は、すべて選んだチューニングから計算されます。 |
+| **zh-Hans** | FretAid — 所有音名、音阶、和弦指型与调音目标音，都由选定的调弦算出。 |
+| **zh-Hant** | FretAid — 所有音名、音階、和弦指型與調音目標音，都由選定的調弦算出。 |
+| **es** | FretAid — todos los nombres de nota, escalas, posiciones de acorde y objetivos del afinador se calculan a partir de la afinación elegida. |
 
 ## Error screen
 
@@ -2475,12 +2475,12 @@ Placeholders: `{note}`, `{string}`, `{where}`
 
 | | Text |
 | --- | --- |
-| **en** | FretLab ran into a problem |
-| **ko** | FretLab에 문제가 생겼습니다 |
-| **ja** | FretLab で問題が起きました |
-| **zh-Hans** | FretLab 出现了问题 |
-| **zh-Hant** | FretLab 發生了問題 |
-| **es** | FretLab ha tenido un problema |
+| **en** | FretAid ran into a problem |
+| **ko** | FretAid에 문제가 생겼습니다 |
+| **ja** | FretAid で問題が起きました |
+| **zh-Hans** | FretAid 出现了问题 |
+| **zh-Hant** | FretAid 發生了問題 |
+| **es** | FretAid ha tenido un problema |
 
 ### `crash.body`
 

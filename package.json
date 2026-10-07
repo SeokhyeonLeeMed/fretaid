@@ -1,8 +1,8 @@
 {
-  "name": "fretlab",
+  "name": "fretaid",
   "private": true,
   "version": "1.0.0",
-  "description": "FretLab - interactive guitar & bass fretboard, scales, chords, strumming and chromatic tuner.",
+  "description": "FretAid - interactive guitar & bass fretboard, scales, chords, strumming and chromatic tuner.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "texts": "vite-node tools/export-texts.ts",
-    "report": "pandoc docs/report.md -o docs/FretLab-report.docx --toc --toc-depth=2 --resource-path=docs && pandoc docs/report.md -o docs/report.html --standalone --toc --toc-depth=2 --css=report.css --embed-resources --resource-path=docs && node tools/make-pdf.mjs"
+    "report": "pandoc docs/report.md -o docs/FretAid-report.docx --toc --toc-depth=2 --resource-path=docs && pandoc docs/report.md -o docs/report.html --standalone --toc --toc-depth=2 --css=report.css --embed-resources --resource-path=docs && node tools/make-pdf.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

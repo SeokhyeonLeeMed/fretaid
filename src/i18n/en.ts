@@ -219,7 +219,7 @@ export const en = {
     'Keeps the remaining positions faintly visible so you can still click them.',
   'audio.stop': 'Stop all sound',
   'audio.reset': 'Reset settings',
-  'audio.reset.confirm': 'Reset every FretLab setting to its default?',
+  'audio.reset.confirm': 'Reset every FretAid setting to its default?',
   'audio.persist.yes':
     'Your instrument, tuning, scale, theme and audio settings are remembered in this browser. No account, no server.',
   'audio.persist.no':
@@ -281,7 +281,7 @@ export const en = {
     `${cents} cents ${verdict}`,
   'tuner.waiting.title': 'Waiting for microphone permission',
   'tuner.waiting.body':
-    'Your browser is asking whether FretLab may use the microphone. Choose Allow to start tuning. Nothing is recorded, uploaded or stored: the audio is analysed in the page and discarded.',
+    'Your browser is asking whether FretAid may use the microphone. Choose Allow to start tuning. Nothing is recorded, uploaded or stored: the audio is analysed in the page and discarded.',
   'tuner.ready.title': 'Tuner ready',
   'tuner.ready.body':
     'The tuner listens through your microphone. Permission is requested only now, when you actually open the tuner.',
@@ -313,7 +313,7 @@ export const en = {
   'audio.err.playback': ({ reason }: { reason: string }) => `Playback failed: ${reason}`,
 
   // ---- crash screen ------------------------------------------------------
-  'crash.title': 'FretLab ran into a problem',
+  'crash.title': 'FretAid ran into a problem',
   'crash.body':
     'Something in the interface failed to render. The details are in your browser console.',
   'crash.reload': 'Reload the page',
@@ -321,7 +321,7 @@ export const en = {
 
   // ---- footer ------------------------------------------------------------
   'footer.note':
-    'FretLab — all note names, scales, chord shapes and tuner targets are calculated from the selected tuning.',
+    'FretAid — all note names, scales, chord shapes and tuner targets are calculated from the selected tuning.',
 
   // ---- help marker -------------------------------------------------------
   'help.prefix': ({ text }: { text: string }) => `Help: ${text}`,

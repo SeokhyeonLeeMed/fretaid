@@ -28,12 +28,12 @@ and the equal-tempered fret rule is fitted to them, which recovers the nut
 position and the scale length in drawing units. Both drawings fit to better
 than one part in a thousand of the scale length. Everything is then
 re-expressed with the nut at the origin and the scale length exactly 1000
-units, so FretLab's computed fret positions land on the drawn frets.
+units, so FretAid's computed fret positions land on the drawn frets.
 
 Every shape is used exactly as drawn. That includes the headstock logo, which
 is upside down in the drawings on purpose and is left that way.
 
-## What FretLab draws itself
+## What FretAid draws itself
 
 Only the instrument is artwork. The strings, the note markers, the fret numbers
 and every musical decision are computed from the selected tuning, which is why

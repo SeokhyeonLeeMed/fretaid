@@ -11,11 +11,20 @@ import type { StateStorage } from 'zustand/middleware';
 
 export { persist };
 
+/** Where the settings are kept. */
+export const SETTINGS_KEY = 'fretaid.settings.v1';
+/**
+ * The key used before the application was renamed. Settings saved under it
+ * are still read, so the rename does not reset anybody's instrument, tuning
+ * or language; they are written back under the new key from then on.
+ */
+export const LEGACY_SETTINGS_KEY = 'fretlab.settings.v1';
+
 /** True when localStorage can actually be read and written. */
 export function storageAvailable(): boolean {
   try {
     if (typeof localStorage === 'undefined') return false;
-    const probe = '__fretlab_probe__';
+    const probe = '__fretaid_probe__';
     localStorage.setItem(probe, '1');
     localStorage.removeItem(probe);
     return true;
@@ -27,7 +36,9 @@ export function storageAvailable(): boolean {
 const safeStorage: StateStorage = {
   getItem: (name) => {
     try {
-      return localStorage.getItem(name);
+      const value = localStorage.getItem(name);
+      if (value === null && name === SETTINGS_KEY) return localStorage.getItem(LEGACY_SETTINGS_KEY);
+      return value;
     } catch {
       return null;
     }
